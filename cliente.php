@@ -41,7 +41,27 @@
                         </thead>
                         <tbody>
                         <?php
-                            //Código
+                            $arquivo = fopen("cliente.txt", "r");
+                            while(!feof($arquivo))
+                            {
+                                $linha = fgets($arquivo);
+                            }
+                            $dados = explode(";", $linha);
+                            fclose($arquivo);
+                            $conta = count($dados) - 4;
+                            for($i=0;$i<=$conta;$i++){
+                                $posicao = $i;
+                                echo '<tr>';
+                                echo '<td>'.$dados[$i].'</td>';
+                                $i++;
+                                echo '<td>'.$dados[$i].'</td>';
+                                $i++;
+                                echo '<td>'.$dados[$i].'</td>';
+                                $i++;
+                                echo '<td>'.$dados[$i].'</td>';
+                                echo '<td><a href="editar_cliente.php?pos='.$posicao.'">Editar</a> | <a href="excluir.php?pos='.$posicao.'">Excluir</a></td>';
+                                echo '</tr>';
+                            }
                         ?>
                         <div class="modal fade" id="editaCliente<?php echo $id; ?>" tabindex="0" aria-labelledby="editaCliente" aria-hidden="true" data-bs-backdrop="false">
                             <div class="modal-dialog modal-lg">
