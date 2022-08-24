@@ -10,16 +10,16 @@
 
 <body>
     <?php
-        $nome = $_GET['pos'];
-        $cidade = $nome+1;
-        $celular = $nome+2;
-        $email = $nome+3;
-        $arquivo = fopen("cliente.txt", "r");
-        while(!feof($arquivo)){
-            $linha = fgets($arquivo);
-        }
-        $dados = explode(";", $linha);
-        fclose($arquivo);
+    $nome = $_GET['pos'];
+    $cidade = $nome + 1;
+    $celular = $nome + 2;
+    $email = $nome + 3;
+    $arquivo = fopen("cliente.txt", "r");
+    while (!feof($arquivo)) {
+        $linha = fgets($arquivo);
+    }
+    $dados = explode(";", $linha);
+    fclose($arquivo);
     ?>
     <center>
         <h2>Clientes</h2>
@@ -43,10 +43,26 @@
                         </svg>&nbsp;&nbsp;<b>Edição de Clientes</b></h4>
                 </div>
                 <div class="card-body">
-                    Formulário
+                    <form action="edita.php?pos=<?php echo $nome; ?>" method="post">
+                        <label>Nome</label><br />
+                        <input type="text" name="nome" value="<?php echo $dados[$nome]; ?>" required />
+                        <br />
+                        <label>Cidade</label><br />
+                        <input type="text" name="cidade" value="<?php echo $dados[$cidade]; ?>" required />
+                        <br />
+                        <label>Celular</label><br />
+                        <input type="text" name="celular" value="<?php echo $dados[$celular]; ?>" required />
+                        <br />
+                        <label>e-mail</label><br />
+                        <input type="email" name="email" value="<?php echo $dados[$email]; ?>" />
+                        <br />
+                        <br />
+                        <input type="submit" value="Atualizar" class="btn btn-outline-secondary" name='but_atualizar' />
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
