@@ -14,7 +14,7 @@
         <?php
             include("menu.php");
         ?>
-        </ul>&nbsp;
+        </ul>&nbsp;Teste
     </nav>
     <br/>
     <br/>
